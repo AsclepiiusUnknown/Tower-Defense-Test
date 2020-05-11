@@ -1,0 +1,43 @@
+Add to turret build:
+- particles
+- sounds
+- //money--
+- fading money subtraction (at node)
+- total money lerps one digit at a time to new value(???)
+- time++
+
+Add to turret sell:
+- particles
+- sounds
+- money++
+- fading money subtraction (at node)
+- total money lerps one digit at a time to new value(???)
+- time--
+
+Add to enemy killed:
+- sounds
+//- particles
+- fading money addition at enemy.transform.position
+- total money lerps(like turret lerp)
+
+Ideas:
+- building adds time (cost dependant)
+- selling loses time (cost dependant)
+- killing increases money (enemy level dependant)
+- time gradually decays money (level dependant)
+- multi-level
+- cash in time for money and vice versa (harder to buy time)
+- In-world UI to the right (all but the turret selection)
+- Time related things are light blue (laser beam tip, timer, effects)
+- Money related things are yellow (enemies, money counter, effects)
+- Bad things are red (end goal, wave countdown title)
+- cash in the levels can be converted into the menu currency (maybe 1:10) && bought from store
+- 
+
+Turret Types:
+- standard
+- missile launcher
+- laser beam (slows to half)
+- mega beam (stackable, 30%)
+
+Special Types:
