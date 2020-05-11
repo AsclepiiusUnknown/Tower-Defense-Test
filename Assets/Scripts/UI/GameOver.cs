@@ -8,6 +8,8 @@ public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI wavesText;
 
+    public string menuScene = "MainMenu";
+
     void OnEnable()
     {
         wavesText.text = PlayerStats.Waves.ToString();
@@ -22,6 +24,7 @@ public class GameOver : MonoBehaviour
 
     public void Menu()
     {
-        Debug.Log("Go To Menu.");
+        //Debug.Log("Go To Menu.");
+        SceneManager.LoadScene(menuScene);
     }
 }
