@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -28,5 +29,32 @@ public class PauseManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+    }
+
+    public void Restart()
+    {
+        Toggle();
+
+        int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentBuildIndex);
+    }
+
+    public void Options()
+    {
+        print("Go to options");
+    }
+
+    public void Menu()
+    {
+        print("Go to menu");
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit
+#endif
     }
 }
