@@ -11,6 +11,8 @@ public class PauseManager : MonoBehaviour
 
     public string menuScene = "MainMenu";
 
+    public SceneFader sceneFader;
+
     void Start()
     {
         optionsMenuUI.SetActive(false);
@@ -51,8 +53,8 @@ public class PauseManager : MonoBehaviour
     {
         Toggle();
 
-        int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentBuildIndex);
+        string currentScene = SceneManager.GetActiveScene().name;
+        sceneFader.FadeTo(currentScene);
     }
 
     public void ToggleOptions()
@@ -69,7 +71,7 @@ public class PauseManager : MonoBehaviour
     {
         //print("Go to menu");
         Time.timeScale = 1f;
-        SceneManager.LoadScene(menuScene);
+        sceneFader.FadeTo(menuScene);
     }
 
     public void Quit()
@@ -79,5 +81,8 @@ public class PauseManager : MonoBehaviour
 #else
         Application.Quit
 #endif
+
+        //sceneFader.FadeToQuit();
+        //print("PM");
     }
 }

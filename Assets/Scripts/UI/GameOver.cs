@@ -10,6 +10,8 @@ public class GameOver : MonoBehaviour
 
     public string menuScene = "MainMenu";
 
+    public SceneFader sceneFader;
+
     void OnEnable()
     {
         wavesText.text = PlayerStats.Waves.ToString();
@@ -17,14 +19,15 @@ public class GameOver : MonoBehaviour
 
     public void Retry()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        SceneManager.LoadScene(currentSceneIndex);
+        sceneFader.FadeTo(currentScene);
     }
 
     public void Menu()
     {
         //Debug.Log("Go To Menu.");
-        SceneManager.LoadScene(menuScene);
+
+        sceneFader.FadeTo(menuScene);
     }
 }

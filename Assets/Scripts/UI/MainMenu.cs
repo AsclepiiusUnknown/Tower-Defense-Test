@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject optionsMenuUI;
 
+    public SceneFader sceneFader;
+
     void Start()
     {
         optionsMenuUI.SetActive(false);
@@ -28,7 +30,9 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         //print("play");
-        SceneManager.LoadScene(levelToLoad);
+        //SceneManager.LoadScene(levelToLoad);
+
+        sceneFader.FadeTo(levelToLoad);
     }
 
     public void ToggleOptions()

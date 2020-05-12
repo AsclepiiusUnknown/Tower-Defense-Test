@@ -6,8 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverUI;
     public GameObject shopUI;
+    public GameObject SceneFader;
 
     public static bool gameIsOver;
+
+
+    void Awake()
+    {
+        SceneFader.SetActive(true);
+    }
 
     void Start()
     {

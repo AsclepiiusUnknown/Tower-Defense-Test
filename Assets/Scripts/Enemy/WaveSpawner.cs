@@ -6,22 +6,34 @@ using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public enum GapTimeMode
+    {
+        Consecutive,
+        ConsecutiveIncremental,
+        WaitForEnd,
+        WaitIncremental
+    }
 
-    public Transform spawnPoint;
+    [Header("Time Modes & Clamping")]
+    public GapTimeMode gapTimeMode;
+    public Vector2 CIModeClamp = new Vector2(0, 30);
+    public Vector2 WIModeClamp = new Vector2(0, 15);
 
+    [Header("Wait Times & Countdown")]
     public float timeBtwWaves = 5f;
     private float countdown;
-    public float timeBtwSpawns = 0.4f;
     public float startPrepTime = 10f;
     public bool givePrepTime = true;
 
+    [Header("Enemies & Spawning")]
+    public static int EnemiesAlive = 0;
+    public Transform spawnPoint;
+    private int waveIndex = 0;
+    public WaveData[] waves;
+
+    [Header("Timer UI")]
     public TextMeshProUGUI waveCountdownText;
     public string timerDecimalCount = "F2";
-
-    private int waveIndex = 0;
-
-    public bool useIncrementalTime = true;
 
     void Start()
     {
@@ -31,18 +43,35 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if (EnemiesAlive > 0 && (gapTimeMode == GapTimeMode.WaitForEnd || gapTimeMode == GapTimeMode.WaitIncremental))
+        {
+            return;
+        }
+
         if (countdown <= 0f)
         {
             StartCoroutine("SpawnWave");
 
-            if (useIncrementalTime)
-            {
-                countdown = timeBtwWaves - (timeBtwWaves - waveIndex);
-            }
-            else
+            if (gapTimeMode == GapTimeMode.Consecutive)
             {
                 countdown = timeBtwWaves;
             }
+            else if (gapTimeMode == GapTimeMode.ConsecutiveIncremental)
+            {
+                countdown = timeBtwWaves - (timeBtwWaves - waveIndex);
+                countdown = Mathf.Clamp(countdown, CIModeClamp.x, CIModeClamp.y);
+            }
+            else if (gapTimeMode == GapTimeMode.WaitForEnd)
+            {
+                countdown = timeBtwWaves;
+            }
+            else if (gapTimeMode == GapTimeMode.WaitIncremental)
+            {
+                countdown = timeBtwWaves - (timeBtwWaves - waveIndex);
+                countdown = Mathf.Clamp(countdown, WIModeClamp.x, WIModeClamp.y);
+            }
+
+            return;
         }
 
         countdown -= Time.deltaTime;
@@ -56,18 +85,28 @@ public class WaveSpawner : MonoBehaviour
     {
         //Debug.Log("Wave Incoming!");
 
-        waveIndex++;
         PlayerStats.Waves++;
 
-        for (int i = 0; i < waveIndex; i++)
+        WaveData wave = waves[waveIndex];
+
+        for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(timeBtwSpawns);
+            SpawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1f / wave.rate);
+        }
+
+        waveIndex++;
+
+        if (waveIndex == waves.Length)
+        {
+            Debug.Log("Level Won!");
+            this.enabled = false;
         }
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+        EnemiesAlive++;
     }
 }
