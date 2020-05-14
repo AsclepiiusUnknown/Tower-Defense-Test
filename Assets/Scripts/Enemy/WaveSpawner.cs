@@ -14,6 +14,8 @@ public class WaveSpawner : MonoBehaviour
         WaitIncremental
     }
 
+    public GameManager gameManager;
+
     [Header("Time Modes & Clamping")]
     public GapTimeMode gapTimeMode;
     public Vector2 CIModeClamp = new Vector2(0, 30);
@@ -46,6 +48,12 @@ public class WaveSpawner : MonoBehaviour
         if (EnemiesAlive > 0 && (gapTimeMode == GapTimeMode.WaitForEnd || gapTimeMode == GapTimeMode.WaitIncremental))
         {
             return;
+        }
+
+        if (waveIndex == waves.Length)
+        {
+            gameManager.WinLevel();
+            this.enabled = false;
         }
 
         if (countdown <= 0f)
@@ -89,6 +97,8 @@ public class WaveSpawner : MonoBehaviour
 
         WaveData wave = waves[waveIndex];
 
+        EnemiesAlive = wave.count;
+
         for (int i = 0; i < wave.count; i++)
         {
             SpawnEnemy(wave.enemy);
@@ -96,17 +106,10 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveIndex++;
-
-        if (waveIndex == waves.Length)
-        {
-            Debug.Log("Level Won!");
-            this.enabled = false;
-        }
     }
 
     void SpawnEnemy(GameObject enemy)
     {
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-        EnemiesAlive++;
     }
 }

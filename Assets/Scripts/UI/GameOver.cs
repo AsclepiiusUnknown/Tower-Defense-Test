@@ -2,32 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameOver : MonoBehaviour
 {
-    public TextMeshProUGUI wavesText;
+    public GameManager gameManager;
 
-    public string menuScene = "MainMenu";
-
-    public SceneFader sceneFader;
-
-    void OnEnable()
+    void Start()
     {
-        wavesText.text = PlayerStats.Waves.ToString();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError(this + "couldn't find GameManager");
+        }
     }
 
     public void Retry()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
+        gameManager.Retry();
+    }
 
-        sceneFader.FadeTo(currentScene);
+    public void ToggleOptions()
+    {
+        gameManager.ToggleOptions();
     }
 
     public void Menu()
     {
-        //Debug.Log("Go To Menu.");
+        gameManager.Menu();
+    }
 
-        sceneFader.FadeTo(menuScene);
+    public void Quit()
+    {
+        gameManager.Quit();
     }
 }

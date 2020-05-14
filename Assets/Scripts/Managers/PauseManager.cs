@@ -5,84 +5,55 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject PauseUI;
-    public GameObject shopUI;
-    public GameObject optionsMenuUI;
-
-    public string menuScene = "MainMenu";
-
-    public SceneFader sceneFader;
+    public GameManager gameManager;
 
     void Start()
     {
-        optionsMenuUI.SetActive(false);
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError(this + "couldn't find GameManager");
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            if (optionsMenuUI.activeSelf)
+            if (gameManager.OptionsUI.activeSelf)
             {
-                optionsMenuUI.SetActive(false);
-                PauseUI.SetActive(true);
+                gameManager.OptionsUI.SetActive(false);
+                gameManager.PauseUI.SetActive(true);
             }
             else
             {
-                Toggle();
+                TogglePause();
             }
         }
     }
 
-    public void Toggle()
+    public void TogglePause()
     {
-        //shopUI.SetActive(UI.activeSelf); //Optional: Deactivates the shop ui during pauses
-        PauseUI.SetActive(!PauseUI.activeSelf);
-
-        if (PauseUI.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+        gameManager.TogglePause(true);
     }
 
     public void Restart()
     {
-        Toggle();
-
-        string currentScene = SceneManager.GetActiveScene().name;
-        sceneFader.FadeTo(currentScene);
+        gameManager.Restart();
     }
 
     public void ToggleOptions()
     {
-        print("options");
-        if (optionsMenuUI != null)
-        {
-            optionsMenuUI.SetActive(!optionsMenuUI.activeSelf);
-            PauseUI.SetActive(!PauseUI.activeSelf);
-        }
+        gameManager.ToggleOptions();
     }
 
     public void Menu()
     {
-        //print("Go to menu");
-        Time.timeScale = 1f;
-        sceneFader.FadeTo(menuScene);
+        gameManager.Menu();
     }
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit
-#endif
-
-        //sceneFader.FadeToQuit();
-        //print("PM");
+        gameManager.Quit();
     }
 }

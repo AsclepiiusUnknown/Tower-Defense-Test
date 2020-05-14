@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour //Enemy
     public int moneyWorth = 50;
     public GameObject deathEffect;
 
+    private bool isDead = false;
+
     void Start()
     {
         health = maxHealth;
@@ -32,7 +34,7 @@ public class Enemy : MonoBehaviour //Enemy
 
         healthBar.fillAmount = health / maxHealth;
 
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             Die();
         }
@@ -45,6 +47,8 @@ public class Enemy : MonoBehaviour //Enemy
 
     void Die()
     {
+        isDead = true;
+
         PlayerStats.money += moneyWorth;
 
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);

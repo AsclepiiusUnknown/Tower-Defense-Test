@@ -648,6 +648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Fader
       objectReference: {fileID: 0}
+    - target: {fileID: 5448656445065668097, guid: 4af243ed701d09a4f8d42fed6504e296,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5448656445065668110, guid: 4af243ed701d09a4f8d42fed6504e296,
         type: 3}
       propertyPath: fadeCurve.m_Curve.Array.size
@@ -1530,7 +1535,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.47058827, g: 0.40784317, b: 0.6745098, a: 1}
+  m_BackGroundColor: {r: 0.33333334, g: 0.39607847, b: 0.6039216, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3073,7 +3078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1936edd6c57cf644482ce4035309fcfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level1
+  levelToLoad: LevelSelect
   optionsMenuUI: {fileID: 1237284886}
   sceneFader: {fileID: 232548699}
 --- !u!1 &2113152507

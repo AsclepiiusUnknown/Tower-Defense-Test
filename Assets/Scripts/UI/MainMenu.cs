@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        sceneFader.gameObject.SetActive(true);
         optionsMenuUI.SetActive(false);
     }
 

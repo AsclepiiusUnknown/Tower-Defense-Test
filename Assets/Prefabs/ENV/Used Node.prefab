@@ -105,9 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b994471820e8b4b478f59307b3c39449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverColor: {r: 0.7137255, g: 0.7137255, b: 0.7137255, a: 1}
-  usedColor: {r: 0.40392157, g: 0.40392157, b: 0.40392157, a: 1}
-  tooLowColor: {r: 1, g: 0, b: 0.34901962, a: 1}
-  posOffset: {x: 0, y: 1.25, z: 0}
   turret: {fileID: 926023862435043819, guid: eb9be23d1a456bb4fa697c327de7034c, type: 3}
+  turretBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    turretCostText: {fileID: 0}
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
+  isUpgraded: 0
   isEmptyPlaceholder: 1
+  hoverColor: {r: 0.43529412, g: 0.45882353, b: 0.6509804, a: 1}
+  usedColor: {r: 0.32941177, g: 0.3137255, b: 0.5411765, a: 1}
+  tooLowColor: {r: 1, g: 0.35686275, b: 0.30980393, a: 1}
+  posOffset: {x: 0, y: 1.25, z: 0}
+  offectOffset: {x: 0, y: 10, z: 0}
