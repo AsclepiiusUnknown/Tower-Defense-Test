@@ -297,7 +297,7 @@ MonoBehaviour:
   startSpeed: 7
   speed: 15
   minDistanceToPoint: 0.5
-  maxHealth: 350
+  maxHealth: 300
   healthBar: {fileID: 5943925749967218212}
   moneyWorth: 95
   deathEffect: {fileID: 5091538093981833365, guid: 9ca5ef5ca3ca21c4084340294f064fed,
