@@ -114,8 +114,8 @@ MonoBehaviour:
     upgradeCost: 0
   isUpgraded: 0
   isEmptyPlaceholder: 1
-  hoverColor: {r: 0.43529412, g: 0.45882353, b: 0.6509804, a: 1}
-  usedColor: {r: 0.32941177, g: 0.3137255, b: 0.5411765, a: 1}
-  tooLowColor: {r: 1, g: 0.35686275, b: 0.30980393, a: 1}
+  hoverColor: {r: 0.8509804, g: 0.57254905, b: 0.78431374, a: 1}
+  usedColor: {r: 0.40784314, g: 0.05882353, b: 0.7411765, a: 1}
+  tooLowColor: {r: 0.99607843, g: 0.027450968, b: 0.027450968, a: 1}
   posOffset: {x: 0, y: 1.25, z: 0}
   offectOffset: {x: 0, y: 10, z: 0}
