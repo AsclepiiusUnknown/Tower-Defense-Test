@@ -95,5 +95,5 @@ MonoBehaviour:
   explosionRadius: 0
   hitEffect: {fileID: 964470584325143517, guid: 9b65ef63307392d4aa4654260ed9f471,
     type: 3}
-  hitDamage: 45
+  hitDamage: 50
   explosionDamage: 0

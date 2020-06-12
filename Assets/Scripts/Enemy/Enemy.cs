@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour //Enemy
+public class Enemy : MonoBehaviour
 {
     [Header("Movement")]
     public float startSpeed = 10f;
