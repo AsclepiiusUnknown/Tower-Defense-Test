@@ -43,4 +43,17 @@ public class PlayerStats : MonoBehaviour
         money += amount;
     }
     #endregion
+    public void SaveStats()
+    {
+        SaveSystem.SaveAllData(this);
+    }
+    public void LoadStats()
+    {
+        Save data = SaveSystem.LoadAllData();
+
+        money = data._money;
+        lives = data._health;
+        Waves = data._wave;
+
+    }
 }

@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
     /*void OnGUI()
     {
         //Delete all of the PlayerPrefs settings by pressing this Button
