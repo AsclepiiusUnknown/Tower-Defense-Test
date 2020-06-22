@@ -10217,7 +10217,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-97874
+  m_Name: pb_Mesh-31584
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25845,7 +25845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f35a0505b6b6444b173c06cd4a7b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMoney: 400
+  startMoney: 4000
   startLives: 3
 --- !u!114 &1719043787
 MonoBehaviour:
