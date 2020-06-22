@@ -6,32 +6,26 @@ using UnityEngine.UI;
 
 public class SceneFader : MonoBehaviour
 {
-    #region Variables
     public Image fadeImg;
     public AnimationCurve fadeCurve;
-    #endregion
 
-    #region Setup
     void Start()
     {
         StartCoroutine("FadeIn");
     }
-    #endregion
 
-    #region Fading
-    //used to fade into a scene
     public void FadeTo(string scene)
     {
         StartCoroutine(FadeOut(scene));
     }
 
-    //used to fade and quit
     public void FadeToQuit()
     {
         StartCoroutine(FadeQuit());
+        print("VOID");
+
     }
 
-    //Fade into the scene with the animation curve
     IEnumerator FadeIn()
     {
         float t = 1f;
@@ -45,7 +39,6 @@ public class SceneFader : MonoBehaviour
         }
     }
 
-    //Fade out of the scene into another with the curve
     IEnumerator FadeOut(string scene)
     {
         float t = 0f;
@@ -61,7 +54,6 @@ public class SceneFader : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    //Fade to quit
     public IEnumerator FadeQuit()
     {
         float t = 1f;
@@ -86,5 +78,4 @@ public class SceneFader : MonoBehaviour
         print("End");
 
     }
-    #endregion
 }

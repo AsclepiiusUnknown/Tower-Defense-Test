@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,6 @@ using TMPro;
 
 public class NodeUI : MonoBehaviour
 {
-    #region Variables
     [Header("General")]
     public GameObject ui;
     private Node target;
@@ -19,16 +17,13 @@ public class NodeUI : MonoBehaviour
 
     [Header("Selling")]
     public TextMeshProUGUI sellAmountTxt;
-    #endregion
 
-    #region Setup
+
     void Start()
     {
         upgradeBtn.interactable = true;
     }
-    #endregion
 
-    #region Target
     public void SetTarget(Node _target)
     {
         target = _target;
@@ -52,14 +47,11 @@ public class NodeUI : MonoBehaviour
 
         ui.SetActive(true);
     }
-    #endregion
 
-    #region Hide UI Elements
     public void Hide()
     {
         ui.SetActive(false);
     }
-    #endregion
 
     public void Upgrade()
     {
@@ -67,12 +59,10 @@ public class NodeUI : MonoBehaviour
         BuildManager.instance.DeselectNode(); //This automatically hides NodeUI after upgrade
     }
 
-    #region Sell Turret
     public void Sell()
     {
         target.SellTurret();
         BuildManager.instance.DeselectNode(); //This automatically hides NodeUI after upgrade
         target.isUpgraded = false;
     }
-    #endregion
 }

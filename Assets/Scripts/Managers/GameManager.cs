@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region Variables
     [Header("UI Elements")]
     public GameObject PauseUI;
     public GameObject OptionsUI;
@@ -16,10 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("Other")]
     public SceneFader sceneFader;
     public static bool gameIsOver;
-    public string menuScene = "MainMenu";
-    #endregion
+    public string menuScene = "TDMenu";
 
-    #region Setup
     void Start()
     {
         sceneFader.gameObject.SetActive(true);
@@ -33,9 +30,7 @@ public class GameManager : MonoBehaviour
 
         ShopUI.SetActive(true);
     }
-    #endregion
 
-    #region Debugging
     void Update()
     {
         if (!gameIsOver && PlayerStats.lives <= 0)
@@ -50,10 +45,7 @@ public class GameManager : MonoBehaviour
         }
 #endif
     }
-    #endregion
 
-    #region End of Level
-    //Used when the player loses the level
     void EndGame()
     {
         gameIsOver = true;
@@ -63,7 +55,6 @@ public class GameManager : MonoBehaviour
         ShopUI.SetActive(false);
     }
 
-    //used when the player wins the level
     public void WinLevel()
     {
         Debug.Log("LEVEL WON!!");
@@ -71,10 +62,9 @@ public class GameManager : MonoBehaviour
         gameIsOver = true;
         VictoryUI.SetActive(true);
     }
-    #endregion
 
     #region UI Manager
-    //used to retry the lost level
+
     public void Retry()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -82,7 +72,6 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeTo(currentScene);
     }
 
-    //Used to go to the menu scene
     public void Menu()
     {
         //Debug.Log("Go To Menu.");
@@ -90,7 +79,6 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeTo(menuScene);
     }
 
-    //used to toggle the pause menu
     public void TogglePause(bool toggleTimeScale)
     {
         if (gameIsOver)
@@ -119,7 +107,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //used to restart the current level
     public void Restart()
     {
         TogglePause(true);
@@ -128,7 +115,6 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeTo(currentScene);
     }
 
-    //used to toggle the options menu
     public void ToggleOptions()
     {
         print("Options");
@@ -145,7 +131,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //used to quit the game
     public void Quit()
     {
 #if UNITY_EDITOR
@@ -158,7 +143,6 @@ public class GameManager : MonoBehaviour
         //print("PM");
     }
 
-    //used to continue to the next level
     public void Continue(string nextLevel, int indexToUnlock)
     {
         PlayerPrefs.SetInt("Level Reached", indexToUnlock);
@@ -166,4 +150,14 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+
+    /*void OnGUI()
+    {
+        //Delete all of the PlayerPrefs settings by pressing this Button
+        if (GUI.Button(new Rect(100, 200, 200, 60), "Delete"))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }*/
 }

@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    #region Variables
     public static BuildManager instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("More than one BuildManager in the scene!!");
+            return;
+        }
+        instance = this;
+    }
 
     public GameObject standardTurretPrefab;
     public GameObject missileTurretPrefab;
@@ -19,33 +28,21 @@ public class BuildManager : MonoBehaviour
 
     public NodeUI nodeUI;
 
-    //Whether or not we can build
     public bool CanBuild
     {
         get { return turretToBuild != null; }
     }
 
-    //Whether or not we have the money required
     public bool HasMoney
     {
         get { return PlayerStats.money >= turretToBuild.cost; }
     }
-    #endregion
 
-    #region Setup
-    void Awake()
+    /*public void SetTurretToBuild(GameObject turret)
     {
-        if (instance != null)
-        {
-            Debug.LogError("More than one BuildManager in the scene!!");
-            return;
-        }
-        instance = this;
-    }
-    #endregion
+        turretToBuild = turret;
+    }*/ //Obselete
 
-    #region Node Selection
-    //Select the given node
     public void SelectNode(Node node)
     {
         if (selectedNode == node)
@@ -61,27 +58,21 @@ public class BuildManager : MonoBehaviour
         nodeUI.SetTarget(node);
     }
 
-    //Deselect the node by deselecting all
     public void DeselectNode()
     {
         //Switching selection
         selectedNode = null;
         nodeUI.Hide();
     }
-    #endregion
 
-    #region Select Turret
-    //Select the turret we want to build using the given blueprint
     public void SelectTurretToBuild(TurretBlueprint blueprint)
     {
         turretToBuild = blueprint;
         DeselectNode();
     }
 
-    //return the turret to build
     public TurretBlueprint GetTurretToBuild()
     {
         return turretToBuild;
     }
-    #endregion
 }

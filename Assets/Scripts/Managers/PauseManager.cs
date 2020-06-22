@@ -5,11 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    #region Variables
     public GameManager gameManager;
-    #endregion
 
-    #region Setup
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -18,7 +15,6 @@ public class PauseManager : MonoBehaviour
             Debug.LogError(this + "couldn't find GameManager");
         }
     }
-    #endregion
 
     void Update()
     {
@@ -36,7 +32,6 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    #region menu Item Fucntionality
     public void TogglePause()
     {
         gameManager.TogglePause(true);
@@ -61,5 +56,4 @@ public class PauseManager : MonoBehaviour
     {
         gameManager.Quit();
     }
-    #endregion
 }

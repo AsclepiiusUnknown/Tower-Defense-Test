@@ -5,14 +5,11 @@ using UnityEngine.UI;
 
 public class LevelSelector : MonoBehaviour
 {
-    #region Variables
     public SceneFader sceneFader;
     public string menuScene = "MainMenu";
 
     public Button[] levelButtons;
-    #endregion
 
-    #region Setup
     void Awake()
     {
         if (!sceneFader.gameObject.activeSelf)
@@ -33,22 +30,17 @@ public class LevelSelector : MonoBehaviour
             }
         }
     }
-    #endregion
 
     void Update()
     {
-        //if we escape go to the menu scene
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             sceneFader.FadeTo(menuScene);
         }
     }
 
-    #region Select
-    //used to fade to the given level when we select it
     public void Select(string levelName)
     {
         sceneFader.FadeTo(levelName);
     }
-    #endregion
 }

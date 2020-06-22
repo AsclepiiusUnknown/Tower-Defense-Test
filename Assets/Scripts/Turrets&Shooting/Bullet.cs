@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    #region Variables
     private Transform target;
 
     public float speed = 70f;
@@ -13,9 +12,12 @@ public class Bullet : MonoBehaviour
 
     public int hitDamage = 50;
     public int explosionDamage = 50;
-    #endregion
 
-    #region Setup
+    public void Seek(Transform _target)
+    {
+        target = _target;
+    }
+
     void Update()
     {
         if (target == null)
@@ -36,18 +38,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         transform.LookAt(target);
     }
-    #endregion
 
-    #region Seek
-    //Set the new target
-    public void Seek(Transform _target)
-    {
-        target = _target;
-    }
-    #endregion
-
-    #region Hit Target
-    //Hit the target and create an explosion if we need to, otheriwse just perfomr normal damage
     void HitTarget()
     {
         GameObject effectGO = (GameObject)Instantiate(hitEffect, transform.position, transform.rotation);
@@ -65,10 +56,7 @@ public class Bullet : MonoBehaviour
         //Debug.Log("Hit");
         Destroy(gameObject);
     }
-    #endregion
 
-    #region Explosive
-    //Explode and deal explosion damage
     void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -81,21 +69,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    //Deal explosion damage in the given area to the enemy game object
-    void ExplosionDamage(Transform enemyGO)
-    {
-        Enemy e = enemyGO.GetComponent<Enemy>();
-
-        if (e != null)
-        {
-            e.TakeDamage(explosionDamage);
-            print("Exp Dmg: " + hitDamage);
-        }
-    }
-    #endregion
-
-    #region Damage
-    //Deal hit damage to the enemy game object
     void HitDamage(Transform enemyGO)
     {
         Enemy e = enemyGO.GetComponent<Enemy>();
@@ -106,14 +79,21 @@ public class Bullet : MonoBehaviour
             print("Dmg: " + hitDamage);
         }
     }
-    #endregion
 
-    #region Gizmos
-    //Draw gizmos for prototyping and debugging
+    void ExplosionDamage(Transform enemyGO)
+    {
+        Enemy e = enemyGO.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(explosionDamage);
+            print("Exp Dmg: " + hitDamage);
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
-    #endregion
 }

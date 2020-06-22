@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-    #region Variables
+
     [Header("Turret")]
     [HideInInspector]
     public GameObject turret;
@@ -28,9 +28,7 @@ public class Node : MonoBehaviour
     public Vector3 offectOffset = new Vector3(0, 10, 0);
 
     BuildManager buildManager;
-    #endregion
 
-    #region Setup
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -42,90 +40,20 @@ public class Node : MonoBehaviour
             UsedColor();
         }
     }
-    #endregion
 
     void Update()
     {
-
-        //if we have put on a turret
         if (turret != null)
         {
-            UsedColor(); //use the used color to display this
+            UsedColor();
         }
     }
 
-    //used to get the positon to build
     public Vector3 GetBuildPos()
     {
         return transform.position + posOffset;
     }
 
-    #region Build
-    void BuildTurret(TurretBlueprint blueprint)
-    {
-        if (PlayerStats.money < blueprint.cost)
-        {
-            print("Not enough money to build turret");
-            return;
-        }
-
-        PlayerStats.money -= blueprint.cost;
-
-        GameObject _turret = Instantiate(blueprint.prefab, GetBuildPos(), Quaternion.identity);
-        turret = _turret;
-
-        turretBlueprint = blueprint;
-
-        GameObject timeEffect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPos(), Quaternion.identity); //change buildeffect to uprgadeEffect for variation (?)
-        Destroy(timeEffect, 5f);
-
-        print("Turret Built. Money left: " + PlayerStats.money);
-    }
-    #endregion
-
-    #region Upgrade
-    public void UpgradeTurret()
-    {
-        if (PlayerStats.money < turretBlueprint.upgradeCost)
-        {
-            print("Not enough money to upgrade turret");
-            return;
-        }
-
-        PlayerStats.money -= turretBlueprint.upgradeCost;
-
-        //Destroy old turret
-        Destroy(turret);
-
-        //Build new turret
-        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPos(), Quaternion.identity);
-        turret = _turret;
-
-        GameObject timeEffect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPos(), Quaternion.identity); //change buildeffect to uprgadeEffect for variation (?)
-        Destroy(timeEffect, 5f);
-
-        isUpgraded = true;
-
-        print("Turret Upgraded. Money left: " + PlayerStats.money);
-    }
-    #endregion
-
-    #region Sell
-    public void SellTurret()
-    {
-        PlayerStats.money += turretBlueprint.GetSellAmount(isUpgraded);
-
-        //Spawn Effect
-        GameObject timeEffect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPos(), Quaternion.Euler(180, 0, 0)); //change buildeffect to uprgadeEffect for variation (?)
-        Destroy(timeEffect, 5f);
-
-        Destroy(turret);
-        turretBlueprint = null;
-    }
-    #endregion
-
-    #region Mouse
-    //When we press down the mouse
     void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject())
@@ -150,6 +78,64 @@ public class Node : MonoBehaviour
 
         //Build turret
         BuildTurret(buildManager.GetTurretToBuild());
+    }
+
+    void BuildTurret(TurretBlueprint blueprint)
+    {
+        if (PlayerStats.money < blueprint.cost)
+        {
+            print("Not enough money to build turret");
+            return;
+        }
+
+        PlayerStats.money -= blueprint.cost;
+
+        GameObject _turret = Instantiate(blueprint.prefab, GetBuildPos(), Quaternion.identity);
+        turret = _turret;
+
+        turretBlueprint = blueprint;
+
+        GameObject timeEffect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPos(), Quaternion.identity); //change buildeffect to uprgadeEffect for variation (?)
+        Destroy(timeEffect, 5f);
+
+        print("Turret Built. Money left: " + PlayerStats.money);
+    }
+
+    public void UpgradeTurret()
+    {
+        if (PlayerStats.money < turretBlueprint.upgradeCost)
+        {
+            print("Not enough money to upgrade turret");
+            return;
+        }
+
+        PlayerStats.money -= turretBlueprint.upgradeCost;
+
+        //Destroy old turret
+        Destroy(turret);
+
+        //Build new turret
+        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPos(), Quaternion.identity);
+        turret = _turret;
+
+        GameObject timeEffect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPos(), Quaternion.identity); //change buildeffect to uprgadeEffect for variation (?)
+        Destroy(timeEffect, 5f);
+
+        isUpgraded = true;
+
+        print("Turret Upgraded. Money left: " + PlayerStats.money);
+    }
+
+    public void SellTurret()
+    {
+        PlayerStats.money += turretBlueprint.GetSellAmount(isUpgraded);
+
+        //Spawn Effect
+        GameObject timeEffect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPos(), Quaternion.Euler(180, 0, 0)); //change buildeffect to uprgadeEffect for variation (?)
+        Destroy(timeEffect, 5f);
+
+        Destroy(turret);
+        turretBlueprint = null;
     }
 
     void OnMouseEnter()
@@ -195,5 +181,4 @@ public class Node : MonoBehaviour
     {
         rend.material.color = usedColor;
     }
-    #endregion
 }

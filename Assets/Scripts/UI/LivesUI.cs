@@ -6,11 +6,9 @@ using TMPro;
 
 public class LivesUI : MonoBehaviour
 {
-    #region Variables
     public TextMeshProUGUI livesText;
-    #endregion
 
-    // clamp the lives between 0 and infinity and then display it with the text element
+    // Update is called once per frame
     void Update()
     {
         Mathf.Clamp(PlayerStats.lives, 0, Mathf.Infinity);
