@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    #region Variables
     public static int money;
     public int startMoney = 400;
 
@@ -11,7 +12,9 @@ public class PlayerStats : MonoBehaviour
     public int startLives = 20;
 
     public static int Waves;
+    #endregion
 
+    #region Setup
     void Start()
     {
         money = startMoney;
@@ -19,6 +22,7 @@ public class PlayerStats : MonoBehaviour
 
         Waves = 0;
     }
+    #endregion
 
     #region Lives
     public static void ReduceLives(int amount)

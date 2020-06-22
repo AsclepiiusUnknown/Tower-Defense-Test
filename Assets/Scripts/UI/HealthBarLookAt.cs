@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthBarLookAt : MonoBehaviour
 {
+    #region Variables
     public enum LookAxis
     {
         X,
@@ -16,7 +17,9 @@ public class HealthBarLookAt : MonoBehaviour
     public GameObject Target;
     private Vector3 targetPos;
     public LookAxis lookAxis;
+    #endregion
 
+    #region Setup
     void Awake()
     {
         if (Camera.main.gameObject != null)
@@ -33,17 +36,22 @@ public class HealthBarLookAt : MonoBehaviour
 
         targetPos = Camera.main.WorldToScreenPoint(Target.transform.position);
     }
+    #endregion
 
     void Update()
     {
+        #region Debugging
         if (Target == null)
         {
             Debug.LogError("Main Camera GameObject not found by HealthBarLookAt.cs");
             return;
         }
+        #endregion
 
+        //Set the position to default
         targetPos = Vector3.zero;
 
+        //look at the target on the correct axis
         if (lookAxis == LookAxis.X)
         {
             targetPos.x = Target.transform.position.x;
@@ -65,6 +73,7 @@ public class HealthBarLookAt : MonoBehaviour
             targetPos = Vector3.zero;
         }
 
+        //apply rotation
         transform.LookAt(targetPos);
     }
 }

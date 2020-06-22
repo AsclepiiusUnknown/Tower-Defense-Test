@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-
+    #region Variables
     [Header("Turret")]
     [HideInInspector]
     public GameObject turret;
@@ -28,7 +28,9 @@ public class Node : MonoBehaviour
     public Vector3 offectOffset = new Vector3(0, 10, 0);
 
     BuildManager buildManager;
+    #endregion
 
+    #region Setup
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -40,46 +42,25 @@ public class Node : MonoBehaviour
             UsedColor();
         }
     }
+    #endregion
 
     void Update()
     {
+
+        //if we have put on a turret
         if (turret != null)
         {
-            UsedColor();
+            UsedColor(); //use the used color to display this
         }
     }
 
+    //used to get the positon to build
     public Vector3 GetBuildPos()
     {
         return transform.position + posOffset;
     }
 
-    void OnMouseDown()
-    {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return;
-        }
-
-        if (turret != null)
-        {
-            if (!isEmptyPlaceholder)
-            {
-                buildManager.SelectNode(this);
-            }
-            Debug.Log("Can't build there! (display on screen ASAP");
-            return;
-        }
-
-        if (!buildManager.CanBuild)
-        {
-            return;
-        }
-
-        //Build turret
-        BuildTurret(buildManager.GetTurretToBuild());
-    }
-
+    #region Build
     void BuildTurret(TurretBlueprint blueprint)
     {
         if (PlayerStats.money < blueprint.cost)
@@ -100,7 +81,9 @@ public class Node : MonoBehaviour
 
         print("Turret Built. Money left: " + PlayerStats.money);
     }
+    #endregion
 
+    #region Upgrade
     public void UpgradeTurret()
     {
         if (PlayerStats.money < turretBlueprint.upgradeCost)
@@ -125,7 +108,9 @@ public class Node : MonoBehaviour
 
         print("Turret Upgraded. Money left: " + PlayerStats.money);
     }
+    #endregion
 
+    #region Sell
     public void SellTurret()
     {
         PlayerStats.money += turretBlueprint.GetSellAmount(isUpgraded);
@@ -136,6 +121,35 @@ public class Node : MonoBehaviour
 
         Destroy(turret);
         turretBlueprint = null;
+    }
+    #endregion
+
+    #region Mouse
+    //When we press down the mouse
+    void OnMouseDown()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
+        if (turret != null)
+        {
+            if (!isEmptyPlaceholder)
+            {
+                buildManager.SelectNode(this);
+            }
+            Debug.Log("Can't build there! (display on screen ASAP");
+            return;
+        }
+
+        if (!buildManager.CanBuild)
+        {
+            return;
+        }
+
+        //Build turret
+        BuildTurret(buildManager.GetTurretToBuild());
     }
 
     void OnMouseEnter()
@@ -181,4 +195,5 @@ public class Node : MonoBehaviour
     {
         rend.material.color = usedColor;
     }
+    #endregion
 }

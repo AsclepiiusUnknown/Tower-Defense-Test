@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    #region Variables
     public TurretBlueprint standardTurret;
     public TurretBlueprint missileTurret;
     public TurretBlueprint laserTurret;
 
     BuildManager buildManager;
+    #endregion
 
+    #region Setup
     void Start()
     {
         buildManager = BuildManager.instance;
@@ -18,7 +21,9 @@ public class Shop : MonoBehaviour
         missileTurret.turretCostText.text = "$" + missileTurret.cost;
         laserTurret.turretCostText.text = "$" + laserTurret.cost;
     }
+    #endregion
 
+    #region Selection
     public void SelectStandardTurret()
     {
         Debug.Log("Standard Turret Purchased");
@@ -36,4 +41,5 @@ public class Shop : MonoBehaviour
         Debug.Log("laser Turret Purchased");
         buildManager.SelectTurretToBuild(laserTurret);
     }
+    #endregion
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    #region Variables
     [Header("Movement")]
     public float startSpeed = 10f;
     [HideInInspector]
@@ -21,13 +22,18 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
 
     private bool isDead = false;
+    #endregion
 
+    #region Setup
     void Start()
     {
         health = maxHealth;
         speed = startSpeed;
     }
+    #endregion
 
+    #region Damage
+    //take the given ammount of damage and die if we are below 0 health
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -39,12 +45,18 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+    #endregion
 
+    #region Slow Down
+    //Slow down this enemy by the given percentage
     public void Slow(float pct)
     {
-        speed = startSpeed * (1f - pct); //CHnage startSpeed to speed for a stacking effect (?)
+        speed = startSpeed * (1f - pct);
     }
+    #endregion
 
+    #region Death
+    //destroy this enemy appropriately to avoid errors and give money as well as use the effect and tell the wave spawner
     void Die()
     {
         isDead = true;
@@ -58,4 +70,5 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+    #endregion
 }
