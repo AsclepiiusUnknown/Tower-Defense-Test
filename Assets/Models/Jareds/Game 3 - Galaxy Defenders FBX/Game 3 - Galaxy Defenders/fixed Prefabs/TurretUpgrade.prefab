@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3005224896277259678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5339206664279478501}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5339206664279478501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005224896277259678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.038, z: 0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3210026589370629318}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9175026211775961116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8164824918455629173}
+  - component: {fileID: -3738253687008594538}
+  m_Layer: 0
+  m_Name: TurretUpgrade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8164824918455629173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175026211775961116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.619297, y: 1.126, z: 10.653021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2663042350766783552}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3738253687008594538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9175026211775961116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bbcb5cb406f6cd43afbe3365ce8281b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 25
+  bulletPrefab: {fileID: 5692920062846953657, guid: bb4fb001f3a07ed49b2ee502be975c18,
+    type: 3}
+  fireRate: 2.5
+  useLaser: 0
+  damagePerSec: 30
+  slowPct: 0.5
+  enemyScale: 1
+  laserRenderer: {fileID: 0}
+  laserImpactEffect: {fileID: 0}
+  laserImpactLight: {fileID: 0}
+  enemyTag: Enemy
+  TurnSpeed: 10
+  partToRotate: {fileID: 3210026589370629318}
+  firePoint: {fileID: 5339206664279478501}
+--- !u!1001 &7030033420078012250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8164824918455629173}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_Name
+      value: Turret Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3846176
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92307603
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45.24
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 91
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5b6c2d601ba2e247aab026081ecb859, type: 3}
+--- !u!4 &2663042350766783552 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d5b6c2d601ba2e247aab026081ecb859,
+    type: 3}
+  m_PrefabInstance: {fileID: 7030033420078012250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3210026589370629318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5549556289624959900, guid: d5b6c2d601ba2e247aab026081ecb859,
+    type: 3}
+  m_PrefabInstance: {fileID: 7030033420078012250}
+  m_PrefabAsset: {fileID: 0}

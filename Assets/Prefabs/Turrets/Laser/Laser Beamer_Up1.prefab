@@ -386,40 +386,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818829841674466741}
     m_Modifications:
+    - target: {fileID: 9159697640713738604, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
+        type: 3}
+      propertyPath: m_Name
+      value: LaserHitEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.93
+      value: 24.507648
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.14
+      value: 1.7670476
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.07
+      value: -0.701526
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.50000006
+      value: 0.041636426
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.49999997
+      value: 0.5044001
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.49999997
+      value: 0.024360156
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5000001
+      value: -0.86212146
       objectReference: {fileID: 0}
     - target: {fileID: 9159697640713738601, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
@@ -441,10 +446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 9159697640713738604, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
+    - target: {fileID: 7991279635963619214, guid: ee1c48862a6bdf8448c1e6e495ff69a2,
         type: 3}
-      propertyPath: m_Name
-      value: LaserHitEffect
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee1c48862a6bdf8448c1e6e495ff69a2, type: 3}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45081997, g: 0.50073934, b: 0.5746953, a: 1}
+  m_IndirectSpecularColor: {r: 0.45081967, g: 0.50073886, b: 0.5746949, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -624,6 +624,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: In Collaboration With
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d00d572a703e17f4f96dccfefd105b87, type: 2}
@@ -780,6 +782,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Broderick & The Jackons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3afc9a825b0c084cb4edc453b473199, type: 2}
@@ -1093,6 +1097,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Presents
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d00d572a703e17f4f96dccfefd105b87, type: 2}
@@ -1394,6 +1400,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1373608433}
     m_Modifications:
+    - target: {fileID: 6558897576043340518, guid: d832a74e788e4d2448204d616bd3251f,
+        type: 3}
+      propertyPath: m_Name
+      value: MissileEXPEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558897576043340518, guid: d832a74e788e4d2448204d616bd3251f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6558897576043340515, guid: d832a74e788e4d2448204d616bd3251f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1464,16 +1480,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 6558897576043340518, guid: d832a74e788e4d2448204d616bd3251f,
-        type: 3}
-      propertyPath: m_Name
-      value: MissileEXPEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558897576043340518, guid: d832a74e788e4d2448204d616bd3251f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d832a74e788e4d2448204d616bd3251f, type: 3}
 --- !u!1 &1981216421
@@ -1516,12 +1522,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1981216421}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1936edd6c57cf644482ce4035309fcfb, type: 3}
+  m_Script: {fileID: 11500000, guid: aa23106a3fcb4be4d91b93e19559f9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: LevelSelect
-  optionsMenuUI: {fileID: 0}
+  sceneToLoad: TDMenu
   sceneFader: {fileID: 232548699}
+  holdTimeInSecs: 3
+  display: {fileID: 0}
 --- !u!1 &2140619774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,7 +1584,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Galaxy Bitches Games
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_text: Galaxy Defender Games
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3afc9a825b0c084cb4edc453b473199, type: 2}
   m_sharedMaterial: {fileID: -2135530259574561880, guid: d3afc9a825b0c084cb4edc453b473199,
@@ -1606,7 +1615,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 57.9
+  m_fontSize: 53.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1647,7 +1656,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2140619776}
-    characterCount: 20
+    characterCount: 21
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
